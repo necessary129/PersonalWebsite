@@ -1,0 +1,2 @@
+# Blog
+A Django blog.
