@@ -8,7 +8,7 @@ class Post(models.Model):
     content = models.TextField()
     pub_date = models.DateTimeField('date published')
 
-    def bool_d(self):
+    def bool_d():
         return False
     draft = models.BooleanField(default=bool_d)
 
