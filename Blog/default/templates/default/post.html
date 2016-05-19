@@ -1,0 +1,22 @@
+{% extends 'default/base.html' %}
+{% load staticfiles %}
+{% block title %}{{ post.title }}{% endblock %}
+{% block heading %}
+<div class="post-heading">
+    <h1>{{ post.title }}</h1>
+    <h2 class="subheading">{{ post.subtitle }}</h2>
+    <span class="meta">Posted on {{ post.pub_date | date:"F d, Y" }}</span>
+</div>
+{% endblock %}
+{% block img %}{% static 'default/img/post-bg.jpg' %}{% endblock %}
+{% block container %}
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                {{ post.body | safe }}
+            </div>
+        </div>
+    </div>
+</article>
+{% endblock %}
