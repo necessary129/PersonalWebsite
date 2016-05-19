@@ -7,7 +7,7 @@ from .models import Post
 # Create your views here.
 
 def index(request, page):
-    posts = Post.objects.all()
+    posts = Post.objects.filter(draft=False).order_by('-pub_date')
     paginator = Paginator(posts, 10)
     if not page:
         posts = paginator.page(1)

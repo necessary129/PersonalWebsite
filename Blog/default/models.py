@@ -7,6 +7,7 @@ class Post(models.Model):
     subtitle = models.CharField(max_length=300)
     content = models.TextField()
     pub_date = models.DateTimeField('date published')
+    draft = models.BooleanField(default=lambda: False)
 
     def __str__(self):
         return self.title
