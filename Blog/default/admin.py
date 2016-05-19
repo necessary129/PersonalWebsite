@@ -5,8 +5,10 @@ from .models import Post
 admin.site.site_header = "Blog administration"
 admin.site.sit_title = "Blog administration"
 class PostAdmin(admin.ModelAdmin):
-    prepopulated_fields = {"slug": ("title",)}
     list_display = ['title', 'pub_date', 'draft']
     list_filter = ['draft', 'pub_date']
+    fieldsets = (
+    (None, {'fields': ('title', 'content', 'pub_date', 'draft')}),
+    )
 
 admin.site.register(Post, PostAdmin)
