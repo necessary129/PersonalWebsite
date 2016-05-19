@@ -72,18 +72,22 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    {% block heading %}
                     <div class="site-heading">
                         <h1>Shamil K Muhammed</h1>
                         <hr class="small">
                         <span class="subheading">My space where i write about everything.</span>
                     </div>
+                    {% endblock %}
                 </div>
             </div>
         </div>
     </header>
+    {% block container %}
     <div class="container">
         {% block content %}{% endblock %}
     </div>
+    {% endblock %}
     <hr>
     <footer>
         <div class="container">
