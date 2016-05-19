@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import Http404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
@@ -26,4 +26,5 @@ def about(request):
     pass
 
 def post(request, slug):
-    pass
+    post = get_object_or_404(Post, slug=slug)
+    return render(request, 'default/post.html', {'post': post})
