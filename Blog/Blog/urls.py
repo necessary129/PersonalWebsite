@@ -20,4 +20,7 @@ from default import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^(?:page/(?P<page>\d+)/)?$', views.index, name="home"),
+    url(r'^about/$', views.about, name="about"),
+    url(r'^contact/$', views.contact, name="contact"),
+    url(r'^post/(?P<slug>[\w-]+)/', views.post, name="post"),
 ]
