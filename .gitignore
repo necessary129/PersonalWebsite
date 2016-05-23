@@ -64,3 +64,5 @@ target/
 #Custom ignores
 *.sqlite3
 migrations/
+
+local_settings.py

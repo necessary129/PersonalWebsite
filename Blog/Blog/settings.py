@@ -128,3 +128,9 @@ register = template.Library()
 @register.simple_tag
 def setting(name):
     return getattr(globals(), name, "")
+
+try:
+    from local_settings import *
+except ImportError:
+    print("You have not set up the local settings. Please set it up.")
+    exit(1)
