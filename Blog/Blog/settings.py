@@ -115,19 +115,20 @@ USE_L10N = True
 
 USE_TZ = True
 
+NAME = "Shamil K Muhammed"
+
+SUBHEADING = "My space where i write about everything."
+
+TWITTER_URL = "https://twitter.com/noteasham/"
+
+GITHUB_URL = "https://github.com/necessary129/"
+
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
-
-from django import template
-
-register = template.Library()
-
-@register.simple_tag
-def setting(name):
-    return getattr(globals(), name, "")
 
 try:
     from local_settings import *
