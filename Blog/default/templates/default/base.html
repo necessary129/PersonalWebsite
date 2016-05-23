@@ -10,7 +10,7 @@
     <meta name="description" content="My space where i write about almost everything">
     <meta name="author" content="Shamil K Muhammed">
 
-    <title>Shamil K Muhammed - {% block title %}Home{% endblock %}</title>
+    <title>{% setting "name" %} - {% block title %}Home{% endblock %}</title>
 
     <!-- Bootstrap Core CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -44,7 +44,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{% url 'home' %}">Shamil K Muhammed</a>
+                <a class="navbar-brand" href="{% url 'home' %}">{% setting "name" %}</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -74,9 +74,9 @@
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     {% block heading %}
                     <div class="site-heading">
-                        <h1>Shamil K Muhammed</h1>
+                        <h1>{% setting "name" %}</h1>
                         <hr class="small">
-                        <span class="subheading">My space where i write about everything.</span>
+                        <span class="subheading">{% setting "subheading" %}</span>
                     </div>
                     {% endblock %}
                 </div>
@@ -119,7 +119,7 @@
                             </a>
                         </li>
                     </ul>
-                    <p class="copyright text-muted">Copyright &copy; Shamil K Muhammed 2016</p>
+                    <p class="copyright text-muted">Copyright &copy; {% setting "name" %} {% now "Y" %}</p>
                 </div>
             </div>
         </div>
