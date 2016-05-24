@@ -24,9 +24,10 @@ def sendmail(name, email, subject, msg):
     html = settings.EMAIL_HTML.format(name=name, email=email, message=msg)
     text = settings.EMAIL_TEXT.format(name=name, email=email, message=msg)
     fro = settings.EMAIL_FROM.format(name=name)
+    to = settings.EMAIL_TO
     message = MIMEMultipart('alternative')
     message['From'] = fro
-    message['To'] = ",".join(settings.EMAIL_TO)
+    message['To'] = ",".join(to)
     message['Subject'] = subject
     p1, p2 = MIMEText(text, 'text'), MIMEText(html, 'html')
     message.attach(p1)
