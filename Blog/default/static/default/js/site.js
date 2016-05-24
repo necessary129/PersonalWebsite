@@ -41,11 +41,11 @@ $(function() {
 
 $('#ContactForm').submit(function(event){
     event.preventDefault();
+    var firstName = $("input#name").val();
+    if (firstName.indexOf(' ') >= 0) {
+        firstName = name.split(' ').slice(0, -1).join(' ');
+    }
     $.ajax({
-        var firstName = $("input#name").val();
-        if (firstName.indexOf(' ') >= 0) {
-            firstName = name.split(' ').slice(0, -1).join(' ');
-        }
         url: "/mail/",
         type: "post",
         data: $(this).serialize(),
