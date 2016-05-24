@@ -15,7 +15,8 @@ username=None, password=None):
             server.login(username, password)
         server.sendmail(fro, to, msg.as_string())
         return True
-    except smtplib.SMTPException:
+    except smtplib.SMTPException as e:
+        print(e)
         return False
     finally:
         server.quit()
