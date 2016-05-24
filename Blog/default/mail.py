@@ -29,6 +29,7 @@ def sendmail(name, email, subject, msg):
     message['From'] = fro
     message['To'] = ",".join(to)
     message['Subject'] = subject
+    message['Reply-To'] = email
     p1, p2 = MIMEText(text, 'text'), MIMEText(html, 'html')
     message.attach(p1)
     message.attach(p2)
