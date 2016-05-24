@@ -10,7 +10,7 @@ from .mail import sendmail
 # Create your views here.
 
 def index(request, page):
-    if int(page) == 1:
+    if page and int(page) == 1:
         raise Http404("Page does not exist.")
     posts = Post.objects.filter(draft=False).order_by('-pub_date')
     paginator = Paginator(posts, 10)
