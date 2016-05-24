@@ -35,4 +35,4 @@ def sendmail(name, email, subject, msg):
     return _sendmail(fro, to, host=settings.SMTP_HOST,
     port=settings.SMTP_PORT, starttls=settings.SMTP_STARTTLS,
     username=settings.SMTP_AUTH_USERNAME,
-    password=settiings.SMTP_AUTH_PASSWORD)
+    password=settings.SMTP_AUTH_PASSWORD)
