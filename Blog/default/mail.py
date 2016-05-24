@@ -5,7 +5,7 @@ from email.mime.text import MIMEText
 
 from django.conf import settings
 
-def _sendmail(from, to, msg, host="localhost", port=25, starttls=False,
+def _sendmail(fro, to, msg, host="localhost", port=25, starttls=False,
 username=None, password=None):
     server = smtplib.SMTP(host, port)
     try:
@@ -13,7 +13,7 @@ username=None, password=None):
             server.starttls()
         if username:
             server.login(username, password)
-        server.sendmail(from, to, msg.as_string())
+        server.sendmail(fro, to, msg.as_string())
         return True
     except smtplib.SMTPException:
         return False
@@ -23,15 +23,15 @@ username=None, password=None):
 def sendmail(name, email, subject, msg):
     html = settings.EMAIL_HTML.format(name=name, email=email, message=msg)
     text = settings.EMAIL_TEXT.format(name=name, email=email, message=msg)
-    from = settings.EMAIL_FROM.format(name=name)
+    fro = settings.EMAIL_FROM.format(name=name)
     message = MIMEMultipart('alternative')
-    message['From'] = from
+    message['From'] = fro
     message['To'] = ",".join(settings.EMAIL_TO)
     message['Subject'] = subject
     p1, p2 = MIMEText(text, 'text'), MIMEText(html, 'html')
     message.attach(p1)
     message.attach(p2)
-    return _sendmail(from, to, host=settings.SMTP_HOST,
+    return _sendmail(fro, to, host=settings.SMTP_HOST,
     port=settings.SMTP_PORT, starttls=settings.SMTP_STARTTLS,
     username=settings.SMTP_AUTH_USERNAME,
     password=settiings.SMTP_AUTH_PASSWORD)
