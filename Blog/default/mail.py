@@ -3,11 +3,7 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
-import re
-
 from django.conf import settings
-
-mailre = re.compile(r'<(\S+)>')
 
 def _sendmail(fro, to, msg, host="localhost", port=25, starttls=False,
 username=None, password=None):
@@ -20,7 +16,6 @@ username=None, password=None):
         server.sendmail(fro, to, msg.as_string())
         return True
     except smtplib.SMTPException as e:
-        print(e)
         return False
     finally:
         server.quit()
@@ -37,7 +32,7 @@ def sendmail(name, email, subject, msg):
     p1, p2 = MIMEText(text, 'text'), MIMEText(html, 'html')
     message.attach(p1)
     message.attach(p2)
-    return _sendmail(mailre.search(fro).group(1), to, message, host=settings.SMTP_HOST,
+    return _sendmail(fro, to, message, host=settings.SMTP_HOST,
     port=settings.SMTP_PORT, starttls=settings.SMTP_STARTTLS,
     username=settings.SMTP_AUTH_USERNAME,
     password=settings.SMTP_AUTH_PASSWORD)
