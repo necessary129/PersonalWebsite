@@ -23,4 +23,5 @@ urlpatterns = [
     url(r'^about/$', views.about, name="about"),
     url(r'^contact/$', views.contact, name="contact"),
     url(r'^post/(?P<slug>[\w-]+)/', views.post, name="post"),
+    url(r'^mail/', views.mail, name="mail"),
 ]

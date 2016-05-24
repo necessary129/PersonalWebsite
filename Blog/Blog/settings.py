@@ -123,7 +123,42 @@ TWITTER_URL = "https://twitter.com/noteasham/"
 
 GITHUB_URL = "https://github.com/necessary129/"
 
+EMAIL_FROM = "{name} <noreply@yourdomain.com>"
 
+EMAIL_TO = ["mail@yourdomain.org"]
+
+SMTP_HOST = "localhost"
+
+SMTP_PORT = 25
+
+SMTP_STARTTLS = True
+
+SMTP_AUTH_USERNAME = None
+
+SMTP_AUTH_PASSWORD = None
+
+EMAIL_HTML = """\
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+Hi,<br/>
+<p>You have recieved a new message from <strong>{name} (<a href="mailto:{email}">{email}</a>)</strong></p>
+<p>Message:</p>
+<pre>
+{message}
+</pre>
+</body>
+</html>
+"""
+
+EMAIL_TEXT = """\
+Hi you have recieved a new message from {name} ({email}).
+
+Message:
+
+{message}
+"""
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
