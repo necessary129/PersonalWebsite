@@ -39,7 +39,7 @@ $(function() {
     });
 });
 
-$('#ContactForm').submit(function(event){
+$('#contactForm').submit(function(event){
     event.preventDefault();
     var firstName = $("input#name").val();
     if (firstName.indexOf(' ') >= 0) {
