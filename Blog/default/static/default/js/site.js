@@ -20,6 +20,7 @@ jQuery(document).ready(function($) {
                     } else {
                         $('.navbar-custom').removeClass('is-visible is-fixed');
                     }
+
                 } else {
                     //if scrolling down...
                     $('.navbar-custom').removeClass('is-visible');
@@ -59,9 +60,14 @@ $('#contactForm').submit(function(event){
                     .append("<strong>Your message has been sent. </strong>");
                 $('#success > .alert-success')
                     .append('</div>');
-
                 //clear all fields
                 $('#contactForm').trigger("reset");
+        } else if (json['result'] === 'captcha-fail') {
+            $('#success').html("<div class='alert alert-danger'>");
+            $('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
+                .append("</button>");
+            $('#success > .alert-danger').append("<strong>Please complete the CAPTCHA challenge.");
+            $('#success > .alert-danger').append('</div>');
         } else {
             $('#success').html("<div class='alert alert-danger'>");
             $('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
@@ -76,6 +82,8 @@ $('#contactForm').submit(function(event){
                 .append("</button>");
             $('#success > .alert-danger').append("<strong>Sorry " + firstName + ", it seems that my mail server is not responding. Please try again later!");
             $('#success > .alert-danger').append('</div>');
+
         }
     });
+    grecaptcha.reset();
 });

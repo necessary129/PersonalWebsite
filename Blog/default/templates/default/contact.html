@@ -1,6 +1,8 @@
 {% extends 'default/base.html' %}
 {% load staticfiles %}
+{{% load default_extras %}
 {% block title %}Contact{% endblock %}
+{% block head_extras %}<script src='https://www.google.com/recaptcha/api.js'></script>{% endblock %}
 {% block heading %}
 <div class="page-heading">
     <h1>Contact Me</h1>
@@ -39,6 +41,8 @@
                     <textarea rows="5" class="form-control" placeholder="Message" id="message" name="message" required></textarea>
                 </div>
             </div>
+            <br>
+            <div class="g-recaptcha" data-sitekey="{% setting "RECAPTCHA_SITE_KEY" %}"></div>
             <br>
             <div id="success"></div>
             <div class="row">

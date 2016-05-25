@@ -160,6 +160,9 @@ Message:
 {message}
 """
 
+RECAPTCHA_SECRET = "secret"
+RECAPTCHA_SITE_KEY = "key"
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 

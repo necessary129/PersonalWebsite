@@ -1,11 +1,13 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import Http404, HttpResponse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
 import json
 
 from .models import Post
 
 from .mail import sendmail
+from .captcha import verify_recaptcha
 
 # Create your views here.
 
@@ -39,6 +41,9 @@ def mail(request):
     subject = request.POST['subject']
     email = request.POST['email']
     message = request.POST['message']
+    if not verify_recaptcha(request):
+        return HttpResponse(json.dumps({'result': 'captcha-fail'}),
+        content_type='application/json')
     value = sendmail(name, email, subject, message)
     if value:
         return HttpResponse(json.dumps({'result': 'success'}),

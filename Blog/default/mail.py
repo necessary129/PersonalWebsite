@@ -7,7 +7,10 @@ from django.conf import settings
 
 def _sendmail(fro, to, msg, host="localhost", port=25, starttls=False,
 username=None, password=None):
-    server = smtplib.SMTP(host, port)
+    try:
+        server = smtplib.SMTP(host, port)
+    except ConnectionRefusedError:
+        return False
     try:
         if starttls:
             server.starttls()
