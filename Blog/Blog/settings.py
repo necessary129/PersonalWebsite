@@ -180,6 +180,8 @@ I try to add content here. Wish me good luck!
 
 ABOUT_SUBTITLE = "This is what I am."
 
+GA_ID = "UA-78258666-1"
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
