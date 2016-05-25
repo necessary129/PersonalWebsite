@@ -1,5 +1,6 @@
 {% extends 'default/base.html' %}
 {% load staticfiles %}
+{% load default_extras %}
 {% block title %}{{ post.title }}{% endblock %}
 {% block heading %}
 <div class="post-heading">
@@ -15,8 +16,20 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 {{ post.body | safe }}
+                <div id="disqus_thread"></div>
+                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
             </div>
         </div>
     </div>
 </article>
+<script>
+(function() {
+var d = document, s = d.createElement('script');
+
+s.src = '//{% setting "DISQUS_SHORTNAME" %}.disqus.com/embed.js';
+
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
 {% endblock %}
