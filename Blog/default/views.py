@@ -30,7 +30,7 @@ def contact(request):
     return render(request, 'default/contact.html')
 
 def about(request):
-    pass
+    return render(request, 'default/about.html')
 
 def post(request, slug):
     post = get_object_or_404(Post, slug=slug)

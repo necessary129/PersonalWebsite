@@ -163,6 +163,23 @@ Message:
 RECAPTCHA_SECRET = "secret"
 RECAPTCHA_SITE_KEY = "key"
 
+ABOUT = """\
+Hello,
+
+My name is Shamil K Muhammed. I am from a small town
+called [Kalikavu][1] and I am studying at class 9th
+in [Crescent High School, Adakkakundu][2]. I am an experienced coder
+and a N00B writer.
+
+I try to add content here. Wish me good luck!
+
+[1]: https://en.wikipedia.org/wiki/Kalikavu
+[2]: https://www.facebook.com/chssadakkakundukalikavu
+
+"""
+
+ABOUT_SUBTITLE = "This is what I am."
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
@@ -173,3 +190,6 @@ try:
 except ImportError:
     print("You have not set up the local settings. Please set it up.")
     exit(1)
+
+import markdown
+ABOUT = markdown.markdown(ABOUT)

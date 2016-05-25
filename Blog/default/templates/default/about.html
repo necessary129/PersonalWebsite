@@ -1,0 +1,21 @@
+{% extends 'default/base.html' %}
+{% load default_extras %}
+{% load staticfiles %}
+{% block title %}About{% endblock %}
+{% block heading %}
+<div class="page-heading">
+    <h1>About Me</h1>
+    <hr class="small">
+    <span class="subheading">{% setting "ABOUT_SUBTITLE" %}</span>
+</div>
+{% endblock %}
+{% block img %}{% static 'default/img/about-bg.jpg' %}{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        {% autoescape off %}
+            {% setting "ABOUT" %}
+        {% endautoescape %}
+    </div>
+</div>
+{% endblock %}
