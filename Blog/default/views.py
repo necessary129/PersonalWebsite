@@ -32,8 +32,8 @@ def contact(request):
 def about(request):
     return render(request, 'default/about.html')
 
-def post(request, slug):
-    post = get_object_or_404(Post, slug=slug)
+def post(request, pk, slug):
+    post = get_object_or_404(Post, pk=pk, slug=slug)
     return render(request, 'default/post.html', {'post': post})
 
 def mail(request):

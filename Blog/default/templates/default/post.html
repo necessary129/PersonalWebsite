@@ -26,6 +26,10 @@
 </article>
 <script>
 (function() {
+    var disqus_config = function () {
+    this.page.identifier = '{{ post.pk }}';
+    };
+
 var d = document, s = d.createElement('script');
 
 s.src = '//{% setting "DISQUS_SHORTNAME" %}.disqus.com/embed.js';

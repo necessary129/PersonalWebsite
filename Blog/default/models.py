@@ -9,7 +9,7 @@ def slugify(txt):
 
 class Post(models.Model):
     title = models.CharField("Title", max_length=200)
-    slug = models.SlugField(max_length=200,blank=True, null=True, unique=True)
+    slug = models.CharField(max_length=200,blank=True, null=True)
     subtitle = models.CharField("Sub Title", max_length=300)
     content = models.TextField('Entry body', help_text='Use Markdown syntax.')
     pub_date = models.DateTimeField('Date Published')
