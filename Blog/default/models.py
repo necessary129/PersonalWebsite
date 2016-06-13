@@ -20,7 +20,7 @@ class Post(models.Model):
     draft = models.BooleanField(default=bool_d)
 
     def save(self):
-        self.body = markdown.markdown(self.content)
+        self.body = markdown.markdown(self.content, extensions=['markdown.extensions.codehilite','markdown.extensions.fenced_code'])
         self.slug = slugify(self.title)
         super().save()
 
