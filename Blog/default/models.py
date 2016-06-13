@@ -3,9 +3,9 @@ from django.db import models
 import markdown
 import re
 # Create your models here.
-slre = re.compile(r'[^a-zA-Z0-9]+')
+slre = re.compile(r'[^a-zA-Z0-9-]+')
 def slugify(txt):
-    return slre.sub('-', txt).lower()
+    return slre.sub('', txt.replace(" ","-")).lower()
 
 class Post(models.Model):
     title = models.CharField("Title", max_length=200)
