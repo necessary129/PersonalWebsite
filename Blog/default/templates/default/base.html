@@ -71,21 +71,23 @@
 
     <!-- Page Header -->
     <!-- Set your background image for this header on the line below. -->
+    {% block header %}
     <header class="intro-header" style="background-image: url({% block img %}{% static 'default/img/home-bg.jpg' %}{% endblock %})">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     {% block heading %}
                     <div class="site-heading">
-                        <h1>{% setting "NAME" %}</h1>
+                        <h1>{% block name %}{% setting "NAME" %}{% endblock %}</h1>
                         <hr class="small">
-                        <span class="subheading">{% setting "SUBHEADING" %}</span>
+                        <span class="subheading">{% block sub %}{% setting "SUBHEADING" %}{% endblock %}</span>
                     </div>
                     {% endblock %}
                 </div>
             </div>
         </div>
     </header>
+    {% endblock %}
     {% block container %}
     <div class="container">
         {% block content %}{% endblock %}

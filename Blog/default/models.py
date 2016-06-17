@@ -4,12 +4,26 @@ import markdown
 import re
 # Create your models here.
 slre = re.compile(r'[^a-zA-Z0-9-]+')
+slre1 = re.compile(r'[ -/\\&]+')
 def slugify(txt):
-    return slre.sub('', txt.replace(" ","-")).lower()
+    return slre.sub('', slre1.sub('-', txt)).lower()
+
+class Tag(models.Model):
+    name = models.CharField("Name", max_length=50, unique=True)
+    slug = models.CharField(max_length=50, null=True)
+
+    def save(self):
+        self.name = self.name.upper()
+        self.slug = slugify(self.name)
+        super().save()
+
+    def __str__(self):
+        return self.name
 
 class Post(models.Model):
     title = models.CharField("Title", max_length=200)
     slug = models.CharField(max_length=200,blank=True, null=True)
+    tags = models.ManyToManyField(Tag, blank=True)
     subtitle = models.CharField("Sub Title", max_length=300)
     content = models.TextField('Entry body', help_text='Use Markdown syntax.')
     pub_date = models.DateTimeField('Date Published')

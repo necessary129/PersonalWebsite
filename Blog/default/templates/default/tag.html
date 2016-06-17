@@ -1,4 +1,5 @@
 {% extends 'default/base.html' %}
+{% block sub %}Posts tagged '{{ tag.name }}'{% endblock %}
 {% block content %}
 <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -25,10 +26,10 @@
         {% endfor %}
         <ul class="pager">
             {% if posts.has_next %}
-            <li class="next"><a href="{% url 'home' posts.next_page_number %}">Older Posts</a></li>
+            <li class="next"><a href="{% url 'tag' tag.slug posts.next_page_number %}">Older Posts</a></li>
             {% endif %}
             {% if posts.has_previous %}
-            <li class="next"><a href="{% url 'home' posts.previous_page_number %}">Newer Posts</a></li>
+            <li class="next"><a href="{% url 'tag' tag.slug posts.previous_page_number %}">Newer Posts</a></li>
             {% endif %}
         </ul>
     </div>

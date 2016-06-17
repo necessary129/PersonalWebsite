@@ -4,7 +4,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 import json
 
-from .models import Post
+from .models import Post, Tag
 
 from .mail import sendmail
 from .captcha import verify_recaptcha
@@ -51,3 +51,17 @@ def mail(request):
     else:
         return HttpResponse(json.dumps({'result': 'failed'}),
             content_type='application/json')
+
+def tag(request, slug, page):
+    if page and int(page) == 1:
+        raise Http404("Page does not exist.")
+    tag = get_object_or_404(Tag, slug=slug)
+    paginator = Paginator(tag.post_set.all(), 10)
+    if not page:
+        posts = paginator.page(1)
+    else:
+        try:
+            posts = paginator.page(int(page))
+        except EmptyPage:
+            raise Http404("Page does not exist.")
+    return render(request, 'default/tag.html', {'posts': posts, 'tag':tag})

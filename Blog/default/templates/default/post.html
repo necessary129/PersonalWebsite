@@ -6,7 +6,14 @@
 <div class="post-heading">
     <h1>{{ post.title }}</h1>
     <h2 class="subheading">{{ post.subtitle }}</h2>
-    <span class="meta">Posted on {{ post.pub_date | date:"F d, Y" }}</span>
+    <div class="meta">
+        <span class="time">Posted on {{ post.pub_date | date:"F d, Y" }}</span>
+        <span class="tags">
+            {% for tag in post.tags.all %}
+            <a href="{% url 'tag' tag.slug %}">{{ tag.name }}</a>
+            {% endfor %}
+        </span>
+    </div>
 </div>
 {% endblock %}
 {% block img %}{% static 'default/img/post-bg.jpg' %}{% endblock %}
