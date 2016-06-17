@@ -13,7 +13,6 @@ class Tag(models.Model):
     slug = models.CharField(max_length=50, null=True)
 
     def save(self):
-        self.name = self.name.upper()
         self.slug = slugify(self.name)
         super().save()
 
