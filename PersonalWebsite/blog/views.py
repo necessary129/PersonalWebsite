@@ -23,18 +23,18 @@ def index(request, page):
             posts = paginator.page(int(page))
         except EmptyPage:
             raise Http404("Page does not exist.")
-    return render(request, 'default/index.html', {'posts': posts})
+    return render(request, 'blog/index.html', {'posts': posts})
 
 
 def contact(request):
-    return render(request, 'default/contact.html')
+    return render(request, 'blog/contact.html')
 
 def about(request):
-    return render(request, 'default/about.html')
+    return render(request, 'blog/about.html')
 
 def post(request, pk, slug):
     post = get_object_or_404(Post, pk=pk, slug=slug)
-    return render(request, 'default/post.html', {'post': post})
+    return render(request, 'blog/post.html', {'post': post})
 
 def mail(request):
     name = request.POST['name']
@@ -64,4 +64,4 @@ def tag(request, slug, page):
             posts = paginator.page(int(page))
         except EmptyPage:
             raise Http404("Page does not exist.")
-    return render(request, 'default/tag.html', {'posts': posts, 'tag':tag})
+    return render(request, 'blog/tag.html', {'posts': posts, 'tag':tag})

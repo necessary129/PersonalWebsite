@@ -1,4 +1,4 @@
-{% extends 'default/base.html' %}
+{% extends 'blog/base.html' %}
 {% load staticfiles %}
 {{% load default_extras %}
 {% block title %}Contact{% endblock %}
@@ -10,7 +10,7 @@
     <span class="subheading">Have questions? I have answers (maybe).</span>
 </div>
 {% endblock %}
-{% block img %}{% static 'default/img/contact-bg.jpg' %}{% endblock %}
+{% block img %}{% static 'blog/img/contact-bg.jpg' %}{% endblock %}
 {% block content %}
 <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -53,4 +53,7 @@
         </form>
     </div>
 </div>
+<script>
+var mailurl = "{% url 'blog:mail'}"
+</script>
 {% endblock %}
