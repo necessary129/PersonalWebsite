@@ -56,7 +56,7 @@ def tag(request, slug, page):
     if page and int(page) == 1:
         raise Http404("Page does not exist.")
     tag = get_object_or_404(Tag, slug=slug)
-    paginator = Paginator(tag.post_set.all(), 10)
+    paginator = Paginator(tag.post_set.filter(draft=False).order_by('-pub_date'), 10)
     if not page:
         posts = paginator.page(1)
     else:
