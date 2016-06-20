@@ -12,9 +12,9 @@ class Tag(models.Model):
     name = models.CharField("Name", max_length=50, unique=True)
     slug = models.CharField(max_length=50, null=True)
 
-    def save(self):
+    def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
-        super().save()
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.name
@@ -32,10 +32,10 @@ class Post(models.Model):
         return False
     draft = models.BooleanField(default=bool_d)
 
-    def save(self):
+    def save(self, *args, **kwargs):
         self.body = markdown.markdown(self.content, extensions=['markdown.extensions.codehilite','markdown.extensions.fenced_code'])
         self.slug = slugify(self.title)
-        super().save()
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.title
