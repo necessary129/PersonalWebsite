@@ -42,6 +42,13 @@ $(function() {
 
 $('#contactForm').submit(function(event){
     event.preventDefault();
+    $('#success').html("<div class='alert alert-info'>");
+    $('#success > .alert-info').html("<span class='glyphicon glyphicon-refresh gly-spin' aria-hidden='true'>")
+        .append("</span>")
+        .append(" <strong>Please Wait....</strong>");
+    $('#success > .alert-info')
+        .append('</div>');
+    $("#submitbtn").addClass("disabled");
     var firstName = $("input#name").val();
     if (firstName.indexOf(' ') >= 0) {
         firstName = name.split(' ').slice(0, -1).join(' ');
@@ -52,6 +59,7 @@ $('#contactForm').submit(function(event){
         data: $(this).serialize(),
         cache: false,
         success: function(json){
+            $("#submitbtn").removeClass("disabled");
             if (json['result'] === 'success'){
                 $('#success').html("<div class='alert alert-success'>");
                 $('#success > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
@@ -77,6 +85,7 @@ $('#contactForm').submit(function(event){
         }
         },
         error: function(){
+            $("#submitbtn").removeClass("disabled");
             $('#success').html("<div class='alert alert-danger'>");
             $('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
                 .append("</button>");
