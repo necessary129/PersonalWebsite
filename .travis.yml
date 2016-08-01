@@ -3,6 +3,6 @@ sudo: false
 python:
   - "3.4"
 
-install: "pip install django requests"
+install: "pip install -r PersonalWebsite/requirements.txt"
 before_script: "touch PersonalWebsite/local_settings.py"
 script: "python PersonalWebsite/manage.py test"
