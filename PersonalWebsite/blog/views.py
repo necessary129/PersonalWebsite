@@ -33,8 +33,9 @@ def about(request):
     return render(request, 'blog/about.html')
 
 def post(request, pk, slug):
+    url = request.build_absolute_uri()
     post = get_object_or_404(Post, pk=pk, slug=slug)
-    return render(request, 'blog/post.html', {'post': post})
+    return render(request, 'blog/post.html', {'post': post,"absurl":url})
 
 def mail(request):
     name = request.POST['name']
