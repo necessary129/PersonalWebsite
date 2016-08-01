@@ -12,4 +12,4 @@ Live demo: https://shamilkmuhammed.cf/
 ## Aknowledgements
 
 - [Clean Blog by StartBootstrap](startbootstrap.com/template-overviews/clean-blog)
-- [RSSB](https://github.com/kni-labs/rrssb)
+- [RRSSB](https://github.com/kni-labs/rrssb)
