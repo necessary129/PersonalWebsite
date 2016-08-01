@@ -1,6 +1,6 @@
 # PersonalWebsite
 
-![Build Status](https://travis-ci.org/necessary129/PersonalWebsite.svg?branch=master)
+[![Build Status](https://travis-ci.org/necessary129/PersonalWebsite.svg?branch=master)](https://travis-ci.org/necessary129/PersonalWebsite)
 
 A Django Website.
 
