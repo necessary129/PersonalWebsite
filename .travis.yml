@@ -4,5 +4,5 @@ python:
   - "3.4"
 
 install: "pip install django requests"
-before_script: "touch local_settings.py"
+before_script: "touch PersonalWebsite/local_settings.py"
 script: "python PersonalWebsite/manage.py test"
